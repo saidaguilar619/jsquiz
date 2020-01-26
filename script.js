@@ -1,18 +1,16 @@
+let startEl = document.getElementById("start");
+let quizEl = document.getElementById("quiz");
+let questionEl = document.getElementById("question");
 
-const startEl = document.getElementById("start");
-const quizEl = document.getElementById("quiz");
-const questionEl = document.getElementById("question");
+let choiceA = document.getElementById("A");
+let choiceB = document.getElementById("B");
+let choiceC = document.getElementById("C");
+let choiceD = document.getElementById("D");
 
-
-const choiceA = document.getElementById("A");
-const choiceB = document.getElementById("B");
-const choiceC = document.getElementById("C");
-const choiceD = document.getElementById("D");
-
-const counter = document.getElementById("counter");
-const timeGauge = document.getElementById("timeGauge");
-const progress = document.getElementById("progress");
-const scoreDiv = document.getElementById("highScore");
+let counter = document.getElementById("counter");
+let timeGauge = document.getElementById("timeGauge");
+let progress = document.getElementById("progress");
+let scoreEl = document.getElementById("highScore");
 
 let questions = [
     {
@@ -54,17 +52,16 @@ let questions = [
     }
 ];
 
-const lastQuestion = questions.length - 1;
-let runningQuestion = 0;
-let count = 0;
-const questionTime = 100; 
-const gaugeUnit = 150 / questionTime;
-let TIMER;
+let lastQuestion = questions.length - 1;
+let currentQuestion = 0;
+let count = 100;
+let questionTime = 100; 
+let gaugeUnit = 150;
+let timer;
 let score = 0;
 
 function renderQuestion(){
-    let q = questions[runningQuestion];
-    
+    let q = questions[currentQuestion];
     questionEl.innerHTML = "<p>"+ q.question +"</p>";
     choiceA.innerHTML = q.choiceA;
     choiceB.innerHTML = q.choiceB;
@@ -72,73 +69,44 @@ function renderQuestion(){
     choiceD.innerHTML = q.choiceD;
 }
 
-// start quiz
 function startQuiz(){
     startEl.style.display = "none";
-    renderQuestion();
     quizEl.style.display = "block";
-    renderProgress();
-    renderCounter();
-    TIMER = setInterval(renderCounter,1000); // 1000ms = 1s
+    timer = setInterval(renderCounter,1000); 
+    renderQuestion(); 
 }
 
-// render progress
-function renderProgress(){
-    for(let qIndex = 0; qIndex <= lastQuestion; qIndex++){
-        progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
-    }
-}
-
-// counter render
 function renderCounter(){
-    if(count <= questionTime){
+    if(count !== 0 || currentQuestion == lastQuestion ){
         counter.innerHTML = count;
-        timeGauge.style.width = count * gaugeUnit + "px";
-        count++
-    }else{
-        count = 0;
-       
-        answerIsWrong();
-        if(runningQuestion < lastQuestion){
-            runningQuestion++;
-            renderQuestion();
-        }else{
-            // end the quiz and show the score
-            clearInterval(TIMER);
-            scoreRender();
-        }
+        timeGauge.style.width -= 1 + "px";
+        count--;
     }
+    
 }
 
 function checkAnswer(answer){
-    if( answer == questions[runningQuestion].correct){
-        score++;    
-        answerIsCorrect();
+    if( answer === questions[currentQuestion].correct){   
+        score++;
     }else{
-        // answer is wrong
-        //timer - 10secs
+        count -= 10;
     }
-    count = 0;
-    if(runningQuestion < lastQuestion){
-        runningQuestion++;
+
+    if(currentQuestion < lastQuestion){
+        currentQuestion++;
         renderQuestion();
     }else{
-        clearInterval(TIMER);
+        
         scoreRender();
+        finalScore();
     }
 }
 
-function answerIsCorrect(){
-    // document.getElementById(runningQuestion).style.backgroundColor = "#0f0";
-}
-
-function answerIsWrong(){
-    // document.getElementById(runningQuestion).style.backgroundColor = "#f00";
-}
-
-// score render
 function scoreRender(){
-    scoreDiv.style.display = "block";
-    //highScore.innerHTML += "<p>"+ +"</p>";
+    quizEl.style.display = "none";
+    scoreEl.innerHTML += "<p>"+ score +"</p>";
+    scoreEl.style.display = "block";
 }
-start.addEventListener("click",startQuiz);
+
+startEl.addEventListener("click",startQuiz);
+scoreRender();
