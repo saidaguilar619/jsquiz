@@ -1,6 +1,6 @@
 let startEl = document.getElementById("start");
 let quizEl = document.getElementById("quiz");
-let questionEl = document.getElementById("question");
+let pqEl = document.getElementById("pq");
 
 let choiceA = document.getElementById("A");
 let choiceB = document.getElementById("B");
@@ -29,7 +29,7 @@ let questions = [
         correct : "D"
     },{
         question : "Inside which HTML element do we put the JavaScript?",
-        choiceA : "<script>  ",
+        choiceA : "<script>",
         choiceB : "<javascript>",
         choiceC : "<js>",
         choiceD : "<scripting>",
@@ -41,7 +41,6 @@ let questions = [
         choiceC : "<script name='xxx.js'>",
         choiceD : "<script id='xxx.js'>",
         correct : "A"
-    
     },{
         question : "How do you create a function in JavaScript?",
         choiceA : "function myFunction()  ",
@@ -61,8 +60,9 @@ let timer;
 let score = 0;
 
 function renderQuestion(){
+    console.log(currentQuestion);
     let q = questions[currentQuestion];
-    questionEl.innerHTML = "<p>"+ q.question +"</p>";
+    pq.innerHTML = q.question;
     choiceA.innerHTML = q.choiceA;
     choiceB.innerHTML = q.choiceB;
     choiceC.innerHTML = q.choiceC;
@@ -77,12 +77,11 @@ function startQuiz(){
 }
 
 function renderCounter(){
-    if(count !== 0 || currentQuestion == lastQuestion ){
+    if(count !== 0 || currentQuestion === lastQuestion ){
         counter.innerHTML = count;
-        timeGauge.style.width -= 1 + "px";
+        btimeGauge.style.width -= 1 ;
         count--;
     }
-    
 }
 
 function checkAnswer(answer){
@@ -95,10 +94,8 @@ function checkAnswer(answer){
     if(currentQuestion < lastQuestion){
         currentQuestion++;
         renderQuestion();
-    }else{
-        
+    }else{        
         scoreRender();
-        finalScore();
     }
 }
 
@@ -109,4 +106,3 @@ function scoreRender(){
 }
 
 startEl.addEventListener("click",startQuiz);
-scoreRender();

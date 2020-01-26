@@ -44,7 +44,7 @@ body{
     width : 600px;
     position: absolute;
     right : 0;
-    top : 180px;
+    top : 230px;
     padding : 9px
 }
 .choice{
@@ -52,8 +52,8 @@ body{
     text-align: center;
     border : 2px solid black;
     cursor: pointer;
-    padding : 7px;
-    margin: 6px;
+    padding : 10px;
+    margin: 15px;
 }
 .choice:hover{
     border : 2px solid rgb(97, 255, 247);
@@ -82,12 +82,19 @@ body{
     height : 10px;
     border-radius: 10px;
     background-color: mediumseagreen;
-    margin-top : -10px;
+    /* margin-top : -10px; */
     margin-left : 25px;
 }
 
-#highScore{
-    display: none;
+#highScore p{
+   text-align: center;
+   border-color: cadetblue;
+   background-color: cyan;
+   size: 20px;
+   top: 275px;
+}
+#highScore {
+   text-align: center;
 }
 
 

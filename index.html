@@ -10,7 +10,9 @@
     <div id="container">
         <div id="start">Press to Start Quiz!</div>
         <div id="quiz" style="display: none">
-            <div id="question"></div>
+            <div id="question">
+                <p id="pq"></p>
+            </div>
             <div id="choices">
                 <div class="choice" id="A" onclick="checkAnswer('A')"></div>
                 <div class="choice" id="B" onclick="checkAnswer('B')"></div>
@@ -23,7 +25,9 @@
                 <div id="timeGauge"></div>
             </div>
         </div>
-        <div id="highScore" style="display: none"></div>
+        <div id="highScore" style="display: none">
+            <h1>Your Score Out Of 5 is:</h1>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
