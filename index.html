@@ -8,6 +8,10 @@
 </head>
 <body>
     <div id="container">
+        <div class="highDiv">
+            <h2 id="highest">High Score:</h2>
+            <p id="high"></p>
+        </div>
         <div id="start">Press to Start Quiz!</div>
         <div id="quiz" style="display: none">
             <div id="question">
@@ -19,7 +23,7 @@
                 <div class="choice" id="C" onclick="checkAnswer('C')"></div>
                 <div class="choice" id="D" onclick="checkAnswer('D')"></div>
             </div>
-            <h2 id="choiceResult"></h2>
+            <p id="choiceResult"></p>
             <div id="timer">
                 <div id="counter"></div>
                 <div id="btimeGauge"></div>
@@ -29,8 +33,12 @@
         <div id="highScore" style="display: none">
             <h1 id="display"></h1>
             <p id = "userScore"></p>
+            <input id ="initials" placeholder="Enter initials here">
+            <br>
+            <button id = "btn1" onclick="setScore()">Set Score</button>
+            <button id = "btn2" onclick="clearScore()">Clear Scores</button>
         </div>
-    </div>
+    </div> 
     <script src="script.js"></script>
 </body>
 </html>

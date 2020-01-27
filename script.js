@@ -65,6 +65,7 @@ let questionTime = 60;
 let gaugeUnit = 150;
 let timer;
 let score = 0;
+let totalScore;
 
 function renderQuestion(){
     let q = questions[currentQuestion];
@@ -101,7 +102,7 @@ function checkAnswer(answer){
         score++;
     }else{
         count -= 10;
-        document.getElementById("choiceResult").textContent = "Incorrect \n -10 Seconds";
+        document.getElementById("choiceResult").innerHTML = "Incorrect";
     }
 
     if(currentQuestion < lastQuestion){
@@ -113,11 +114,18 @@ function checkAnswer(answer){
     }
 }
 
+function setScore(){
+    let userIni = document.getElementById("btn1").value;
+    document.getElementById("high").textContent = totalScore;
+}
+
 function scoreRender(){
+    totalScore = (score * 10) + count;
     quizEl.style.display = "none"; 
     scoreEl.style.display = "block";
-    document.getElementById("display").textContent = "Your Score Out Of " + questions.length + ":" ;
-    document.getElementById("userScore").textContent = score ;
+    document.getElementById("display").textContent = "Your Score:" + totalScore;
+    document.getElementById("userScore").textContent = "Please Enter Your Initials:" ;
+    return totalScore;
 }
 
 startEl.addEventListener("click",startQuiz);
