@@ -82,6 +82,7 @@ function renderQuestion(){
 function startQuiz(){
     startEl.style.display = "none";
     quizEl.style.display = "block";
+    document.getElementById("high").textContent = localStorage.getItem("highestInfo");
     timer = setInterval(renderCounter,1000); 
     renderQuestion(); 
 }
@@ -115,8 +116,14 @@ function checkAnswer(answer){
 }
 
 function setScore(){
-    let userIni = document.getElementById("btn1").value;
-    document.getElementById("high").textContent = totalScore;
+    var userIni = document.getElementById("initials").value;
+    let storeInfo = totalScore + "points - " + userIni
+
+    document.getElementById("btn1").style.display = "none";
+    
+    document.getElementById("high").textContent = storeInfo;
+    localStorage.setItem("highestInfo", storeInfo);
+    localStorage.setItem("highestScore", totalScore);
 }
 
 function scoreRender(){
@@ -124,8 +131,13 @@ function scoreRender(){
     quizEl.style.display = "none"; 
     scoreEl.style.display = "block";
     document.getElementById("display").textContent = "Your Score:" + totalScore;
-    document.getElementById("userScore").textContent = "Please Enter Your Initials:" ;
-    return totalScore;
+    if (totalScore > localStorage.getItem("highestScore")){
+        document.getElementById("userScore").textContent = "High Score! \n Please Enter Your Initials:" ;
+    }else{
+        document.getElementById("userScore").textContent = "Sorry No High Score" ;
+        document.getElementById("initials").style.display = "none";
+        document.getElementById("btn1").style.display = "none";
+    }
 }
 
 startEl.addEventListener("click",startQuiz);
