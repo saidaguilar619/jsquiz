@@ -82,7 +82,6 @@ function renderQuestion(){
 function startQuiz(){
     startEl.style.display = "none";
     quizEl.style.display = "block";
-    document.getElementById("high").textContent = localStorage.getItem("highestInfo");
     timer = setInterval(renderCounter,1000); 
     renderQuestion(); 
 }
@@ -117,27 +116,35 @@ function checkAnswer(answer){
 
 function setScore(){
     var userIni = document.getElementById("initials").value;
-    let storeInfo = totalScore + "points - " + userIni
-
-    document.getElementById("btn1").style.display = "none";
-    
+    let storeInfo = totalScore + " points - " + userIni
     document.getElementById("high").textContent = storeInfo;
     localStorage.setItem("highestInfo", storeInfo);
     localStorage.setItem("highestScore", totalScore);
+    document.getElementById("btn1").style.visibility = "hidden";
+}
+
+function clearScore(){
+    localStorage.clear();
+    document.getElementById("high").textContent = "";
+    document.getElementById("btn2").style.visibility = "hidden";
+}
+
+function retry(){
+    location.reload();
 }
 
 function scoreRender(){
     totalScore = (score * 10) + count;
     quizEl.style.display = "none"; 
     scoreEl.style.display = "block";
-    document.getElementById("display").textContent = "Your Score:" + totalScore;
+    document.getElementById("display").textContent = "Your Score: " + totalScore + " points";
     if (totalScore > localStorage.getItem("highestScore")){
-        document.getElementById("userScore").textContent = "High Score! \n Please Enter Your Initials:" ;
+        document.getElementById("userScore").textContent = "High Score! Please Enter Your Initials" ;
     }else{
         document.getElementById("userScore").textContent = "Sorry No High Score" ;
         document.getElementById("initials").style.display = "none";
         document.getElementById("btn1").style.display = "none";
     }
 }
-
+document.getElementById("high").textContent = localStorage.getItem("highestInfo");
 startEl.addEventListener("click",startQuiz);

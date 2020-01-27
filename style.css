@@ -5,7 +5,7 @@ body{
 #container{
     margin : 20px auto;
     background-color: rgb(135, 186, 206);
-    height: 550px;
+    height: 500px;
     width : 900px;
     position: relative;
     border:2px solid black;
@@ -18,8 +18,8 @@ body{
     text-align: center;
     cursor: pointer;
     position: absolute;
-    left:275px;
-    top:75px;
+    left:285px;
+    top:175px;
     padding: 20px;
 }
 #start:hover{
@@ -27,12 +27,24 @@ body{
     color : rgb(97, 255, 247);
     background-color: black;
 }
+button{
+    padding: 10px;
+    background-color:rgb(97, 255, 247);
+    font-size: .9em;
+    border: black 2px solid;
+    margin-top: 20px;
+}
+#button:hover{
+    border: 3px solid rgb(0, 255, 242);
+    color : rgb(97, 255, 247);
+    background-color: black;
+}
 #question{
-    width:600px;
+    width:750px;
     height : 125px;
     position: absolute;
-    right:100px;
-    top:15px;
+    right: 95px;
+    top: 60px;
     text-align: center;
 }
 #question p{
@@ -41,15 +53,15 @@ body{
     font-size: 2em;
 }
 #choices{
-    width : 600px;
+    width : 700px;
     position: absolute;
     right : 0;
-    top : 230px;
+    top : 185px;
     padding : 9px;
     size: 22px;
 }
 .choice{
-    width : 350px;
+    width : 400px;
     text-align: center;
     border : 2px solid black;
     cursor: pointer;
@@ -65,19 +77,18 @@ body{
 }
 #timer{
     position: absolute;
-    width : 200px;
-    top : 150px;
-    left: 30px;
+    bottom: 100px;
+    left: 40px;
     text-align: center;
 }
 #counter{
-    font-size: 6em;
+    font-size: 5em;
 }
 
 #choiceResult{
     position: absolute;
     top:300px;
-    left: 50px;
+    right: 50px;
     font-size: 40px;
     height: 40px;
     text-align: center;
@@ -87,12 +98,27 @@ body{
    text-align: center;
    border: solid 2px black;
    background-color: cyan;
-   font-size: 55px;
-   padding: 35px;
+   font-size: 45px;
+   padding: 10px;
    font-weight: bolder;
 }
 #highScore {
    text-align: center;
+}
+#highest{
+    margin: 10px;
+    background-color: cadetblue;
+    padding: 7px;
+}
+#high{
+    top: 14px;
+    left: 290px;
+    position: absolute;
+    font-size: 1.75em;
+    margin: 0px;
+}
+#initials{
+    width: 40%;
 }
 
 
