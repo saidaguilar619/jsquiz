@@ -5,8 +5,8 @@ body{
 #container{
     margin : 20px auto;
     background-color: rgb(135, 186, 206);
-    height: 600px;
-    width : 850px;
+    height: 550px;
+    width : 900px;
     position: relative;
     border:2px solid black;
 }
@@ -45,7 +45,8 @@ body{
     position: absolute;
     right : 0;
     top : 230px;
-    padding : 9px
+    padding : 9px;
+    size: 22px;
 }
 .choice{
     width : 350px;
@@ -54,6 +55,7 @@ body{
     cursor: pointer;
     padding : 10px;
     margin: 15px;
+    size: 22px;
 }
 .choice:hover{
     border : 2px solid rgb(97, 255, 247);
@@ -69,29 +71,16 @@ body{
     text-align: center;
 }
 #counter{
-    font-size: 3em;
-}
-#btimeGauge{
-    width : 150px;
-    height : 10px;
-    border-radius: 10px;
-    background-color: lightgray;
-    margin-left : 25px;
-}
-#timeGauge{
-    height : 10px;
-    border-radius: 10px;
-    background-color: mediumseagreen;
-    /* margin-top : -10px; */
-    margin-left : 25px;
+    font-size: 6em;
 }
 
-#highScore p{
+#userScore{
    text-align: center;
-   border-color: cadetblue;
+   border: solid 2px black;
    background-color: cyan;
-   size: 20px;
-   top: 275px;
+   font-size: 55px;
+   padding: 35px;
+   font-weight: bolder;
 }
 #highScore {
    text-align: center;

@@ -60,8 +60,8 @@ let questions = [
 
 let lastQuestion = questions.length - 1;
 let currentQuestion = 0;
-let count = 100;
-let questionTime = 100; 
+let count = 60;
+let questionTime = 60; 
 let gaugeUnit = 150;
 let timer;
 let score = 0;
@@ -73,6 +73,9 @@ function renderQuestion(){
     choiceB.innerHTML = q.choiceB;
     choiceC.innerHTML = q.choiceC;
     choiceD.innerHTML = q.choiceD;
+    setTimeout(function(){
+        document.getElementById("choiceResult").textContent = "";
+    },2000);
 }
 
 function startQuiz(){
@@ -83,18 +86,22 @@ function startQuiz(){
 }
 
 function renderCounter(){
-    if(count !== 0 || currentQuestion === lastQuestion ){
+    if(count > 0 ){
         counter.innerHTML = count;
-        // btimeGauge.style.width -= 1 ;
         count--;
+    }else{
+        clearInterval(timer);
+        scoreRender();
     }
 }
 
 function checkAnswer(answer){
     if( answer === questions[currentQuestion].correct){   
+        document.getElementById("choiceResult").textContent = "Correct";
         score++;
     }else{
         count -= 10;
+        document.getElementById("choiceResult").textContent = "Incorrect \n -10 Seconds";
     }
 
     if(currentQuestion < lastQuestion){
@@ -102,13 +109,15 @@ function checkAnswer(answer){
         renderQuestion();
     }else{        
         scoreRender();
+        clearInterval(timer);
     }
 }
 
 function scoreRender(){
-    quizEl.style.display = "none";
-    scoreEl.innerHTML += "<p>"+ score +"</p>";
+    quizEl.style.display = "none"; 
     scoreEl.style.display = "block";
+    document.getElementById("display").textContent = "Your Score Out Of " + questions.length + ":" ;
+    document.getElementById("userScore").textContent = score ;
 }
 
 startEl.addEventListener("click",startQuiz);
