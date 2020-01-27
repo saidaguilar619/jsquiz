@@ -28,26 +28,33 @@ let questions = [
         choiceD : "=",
         correct : "D"
     },{
-        question : "Inside which HTML element do we put the JavaScript?",
-        choiceA : "<script>",
-        choiceB : "<javascript>",
-        choiceC : "<js>",
-        choiceD : "<scripting>",
-        correct : "A"
-    },{
-        question : "What is the correct syntax for referring to an external script called 'xxx.js'?",
-        choiceA : "<script src='xxx.js'> ",
-        choiceB : "<script href='xxx.js>",
-        choiceC : "<script name='xxx.js'>",
-        choiceD : "<script id='xxx.js'>",
-        correct : "A"
-    },{
         question : "How do you create a function in JavaScript?",
         choiceA : "function myFunction()  ",
         choiceB : "function:myFunction()",
         choiceC : "function = myFunction()",
         choiceD : "function = myFunction[]",
         correct : "A"
+    },{
+        question : "How do you round the number 7.25, to the nearest integer?",
+        choiceA : "round(7.25) ",
+        choiceB : "Math.round(7.25)  ",
+        choiceC : "Math.rnd(7.25)",
+        choiceD : "rnd(7.25)",
+        correct : "B"
+    },{
+        question : "How do you find the number with the highest value of x and y?",
+        choiceA : "ceil(x, y)",
+        choiceB : "top(x, y)",
+        choiceC : "Math.max(x, y)",
+        choiceD : "Math.ceil(x, y)",
+        correct : "C"
+    },{
+        question : "How can you detect the client's browser name?",
+        choiceA : "browser.name",
+        choiceB : "client.navName",
+        choiceC : "navigator.appName  ",
+        choiceD : "client.browserName",
+        correct : "C"
     }
 ];
 
@@ -60,7 +67,6 @@ let timer;
 let score = 0;
 
 function renderQuestion(){
-    console.log(currentQuestion);
     let q = questions[currentQuestion];
     pq.innerHTML = q.question;
     choiceA.innerHTML = q.choiceA;
@@ -79,7 +85,7 @@ function startQuiz(){
 function renderCounter(){
     if(count !== 0 || currentQuestion === lastQuestion ){
         counter.innerHTML = count;
-        btimeGauge.style.width -= 1 ;
+        // btimeGauge.style.width -= 1 ;
         count--;
     }
 }
