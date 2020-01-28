@@ -1,17 +1,17 @@
+// select important divs
 let startEl = document.getElementById("start");
 let quizEl = document.getElementById("quiz");
 let pqEl = document.getElementById("pq");
+let counter = document.getElementById("counter");
+let scoreEl = document.getElementById("highScore");
 
+// select choices
 let choiceA = document.getElementById("A");
 let choiceB = document.getElementById("B");
 let choiceC = document.getElementById("C");
 let choiceD = document.getElementById("D");
 
-let counter = document.getElementById("counter");
-let timeGauge = document.getElementById("timeGauge");
-let progress = document.getElementById("progress");
-let scoreEl = document.getElementById("highScore");
-
+// array with all of the questions
 let questions = [
     {
         question : "How does a WHILE loop start?", 
@@ -58,34 +58,23 @@ let questions = [
     }
 ];
 
-let lastQuestion = questions.length - 1;
+// important variables
+const lastQuestion = questions.length - 1;
 let currentQuestion = 0;
 let count = 60;
-let questionTime = 60; 
-let gaugeUnit = 150;
-let timer;
 let score = 0;
+let timer;
 let totalScore;
 
-function renderQuestion(){
-    let q = questions[currentQuestion];
-    pq.innerHTML = q.question;
-    choiceA.innerHTML = q.choiceA;
-    choiceB.innerHTML = q.choiceB;
-    choiceC.innerHTML = q.choiceC;
-    choiceD.innerHTML = q.choiceD;
-    setTimeout(function(){
-        document.getElementById("choiceResult").textContent = "";
-    },2000);
-}
-
+// this function is called when user clicks start button
 function startQuiz(){
     startEl.style.display = "none";
     quizEl.style.display = "block";
     timer = setInterval(renderCounter,1000); 
-    renderQuestion(); 
+    askQuestion(); 
 }
 
+// countdown starts at 60
 function renderCounter(){
     if(count > 0 ){
         counter.innerHTML = count;
@@ -96,6 +85,21 @@ function renderCounter(){
     }
 }
 
+// ask user question changes to next after each click
+function askQuestion(){
+    let q = questions[currentQuestion]; //chooses question from array starting with 0
+    pq.innerHTML = q.question;
+    choiceA.innerHTML = q.choiceA;
+    choiceB.innerHTML = q.choiceB;
+    choiceC.innerHTML = q.choiceC;
+    choiceD.innerHTML = q.choiceD;
+
+    setTimeout(function(){     // makes result dissapear after 2 seconds
+        document.getElementById("choiceResult").textContent = "";
+    },2000);
+}
+
+// called after user clicks on any choice
 function checkAnswer(answer){
     if( answer === questions[currentQuestion].correct){   
         document.getElementById("choiceResult").textContent = "Correct";
@@ -107,33 +111,14 @@ function checkAnswer(answer){
 
     if(currentQuestion < lastQuestion){
         currentQuestion++;
-        renderQuestion();
+        askQuestion();
     }else{        
         scoreRender();
         clearInterval(timer);
     }
 }
 
-function setScore(){
-    var userIni = document.getElementById("initials").value;
-    let storeInfo = totalScore + " points - " + userIni
-    document.getElementById("high").textContent = storeInfo;
-    localStorage.setItem("highestInfo", storeInfo);
-    localStorage.setItem("highestScore", totalScore);
-    document.getElementById("setHighScore").style.display = "none";
-    document.getElementById("initials").style.display = "none";
-}
-
-function clearScore(){
-    localStorage.clear();
-    document.getElementById("high").textContent = "";
-    document.getElementById("setClear").style.display = "none";
-}
-
-function retry(){
-    location.reload();
-}
-
+// called at the end of quiz to show score and check for high score
 function scoreRender(){
     totalScore = (score * 10) + count;
     quizEl.style.display = "none"; 
@@ -147,5 +132,31 @@ function scoreRender(){
         document.getElementById("setHighScore").style.display = "none";
     }
 }
+
+// called when user clicks on set score button . dissapears after clicked
+function setScore(){
+    var userIni = document.getElementById("initials").value;
+    let storeInfo = totalScore + " points - " + userIni
+    document.getElementById("high").textContent = storeInfo;
+    localStorage.setItem("highestInfo", storeInfo);
+    localStorage.setItem("highestScore", totalScore);
+    document.getElementById("setHighScore").style.display = "none";
+    document.getElementById("initials").style.display = "none";
+    document.getElementById("userScore").textContent = "Thank You For Playing" ;
+}
+
+// called when user clicks on clear button 
+function clearScore(){
+    localStorage.clear();
+    document.getElementById("high").textContent = "";
+    document.getElementById("setClear").style.display = "none";
+}
+
+// called when user clicks on retry quiz button . reloads document
+function retry(){
+    location.reload();
+}
+
+// displays high score from local storage
 document.getElementById("high").textContent = localStorage.getItem("highestInfo");
 startEl.addEventListener("click",startQuiz);

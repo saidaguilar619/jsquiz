@@ -1,10 +1,10 @@
 body{
     font-size: 24px;
-    font-family: sans-serif;
+    font-family: 'Acme', sans-serif;
 }
 #container{
     margin : 20px auto;
-    background-color: rgb(89, 204, 250);
+    background-image: linear-gradient(to top,rgba(0, 255, 242, 0.726),rgb(255, 255, 255));
     height: 500px;
     width : 900px;
     position: relative;
@@ -21,8 +21,9 @@ body{
     left:285px;
     top:175px;
     padding: 20px;
+    background-color: rgb(0, 255, 242);
 }
-#start:hover{
+#start:hover, button:hover {
     border: 3px solid rgb(0, 255, 242);
     color : rgb(97, 255, 247);
     background-color: black;
@@ -34,12 +35,9 @@ button{
     border: black 2px solid;
     margin: 16px 10px;
     cursor: pointer;
+    font-family: 'Acme', sans-serif;
 }
-button:hover{
-    border: 3px solid rgb(0, 255, 242);
-    color : rgb(97, 255, 247);
-    background-color: black;
-}
+
 #question{
     width:750px;
     height : 125px;
@@ -69,24 +67,20 @@ button:hover{
     padding : 10px;
     margin: 15px;
     size: 22px;
-}
-.choice:hover{
+    background-color: rgb(0, 255, 242);
+}.choice:hover{
     border : 2px solid rgb(97, 255, 247);
     font-weight: bold;
     color: rgb(97, 255, 247);
     background-color: black;
-}
-#timer{
+}#timer{
     position: absolute;
     bottom: 100px;
     left: 40px;
     text-align: center;
-}
-#counter{
+}#counter{
     font-size: 5em;
-}
-
-#choiceResult{
+}#choiceResult{
     position: absolute;
     top:300px;
     right: 50px;
@@ -94,8 +88,7 @@ button:hover{
     height: 40px;
     text-align: center;
     text-emphasis: wrap;
-}
-#userScore{
+}#userScore{
    text-align: center;
    border: solid 2px black;
    background-color: cyan;
@@ -103,12 +96,10 @@ button:hover{
    padding: 10px;
    font-weight: bolder;
    margin: 5px 0px 2px 0px;
-}
-#highScore {
+}#highScore {
    text-align: center;
    font-size: 1.5em;
-}
-#highest{
+}#highest{
     margin: 0px ; 
     background-color: cyan;
     padding: 7px;
@@ -120,18 +111,15 @@ button:hover{
     position: absolute;
     font-size: 1.75em;
     margin: 0px;
-   
-}
-#initials{
+}#initials{
     width: 20%;
     height: 50px;
     font-size: 32px;
     margin-top: 10px;
     background-color: rgb(188, 247, 244);
-}
-#btnContainer{
+    font-family: 'Acme', sans-serif;
+}#btnContainer{
     display: inline-flex;
-    
 }
 
 

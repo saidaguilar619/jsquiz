@@ -1,18 +1,25 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <title>JavaScript Quiz</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="container">
+
+        <!-- div keeps high score at top of page -->
         <div class="highDiv">
             <h2 id="highest">High Score:</h2>
             <p id="high"></p>
         </div>
+
+        <!-- start button -->
         <div id="start">Press to Start Quiz!</div>
+
+        <!-- quiz div hidden untill user clicks start button -->
+        <!-- and dissepears after quiz is over -->
         <div id="quiz" style="display: none">
             <div id="question">
                 <p id="pq"></p>
@@ -26,15 +33,16 @@
             <p id="choiceResult"></p>
             <div id="timer">
                 <div id="counter"></div>
-                <div id="btimeGauge"></div>
-                <div id="timeGauge"></div>
             </div>
         </div>
+
+        <!-- high score div appears at the end of quiz -->
         <div id="highScore" style="display: none">
             <h1 id="display"></h1>
             <p id = "userScore"></p>
-            <input id ="initials" placeholder="Enter initials here">
+            <input id ="initials" placeholder="  enter initials">
             <br>
+            <!-- container for buttons -->
             <div id="btnContainer">
                 <div id="setHighScore">
                     <button id="btn1 btn" onclick="setScore()">Set Score</button>               
