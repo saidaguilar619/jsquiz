@@ -35,9 +35,15 @@
             <p id = "userScore"></p>
             <input id ="initials" placeholder="Enter initials here">
             <br>
-            <button id="btn1 btn" onclick="setScore()">Set Score</button>
-            <button id="btn2 btn " onclick="clearScore()">Clear Scores</button>
-            <button id="btn3 btn" onclick="retry()">Retry Quiz</button>
+            <div id="btnContainer">
+                <div id="setHighScore">
+                    <button id="btn1 btn" onclick="setScore()">Set Score</button>               
+                </div>   
+                <div id="setClear">   
+                    <button id="btn2 btn " onclick="clearScore()">Clear Scores</button>
+                </div>   
+                <button id="btn3 btn" onclick="retry()">Retry Quiz</button>
+            </div>
         </div>
     </div> 
     <script src="script.js"></script>

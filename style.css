@@ -4,7 +4,7 @@ body{
 }
 #container{
     margin : 20px auto;
-    background-color: rgb(135, 186, 206);
+    background-color: rgb(89, 204, 250);
     height: 500px;
     width : 900px;
     position: relative;
@@ -29,12 +29,13 @@ body{
 }
 button{
     padding: 10px;
-    background-color:rgb(97, 255, 247);
+    background-color:cyan;
     font-size: .9em;
     border: black 2px solid;
-    margin-top: 20px;
+    margin: 16px 10px;
+    cursor: pointer;
 }
-#button:hover{
+button:hover{
     border: 3px solid rgb(0, 255, 242);
     color : rgb(97, 255, 247);
     background-color: black;
@@ -101,26 +102,37 @@ button{
    font-size: 45px;
    padding: 10px;
    font-weight: bolder;
+   margin: 5px 0px 2px 0px;
 }
 #highScore {
    text-align: center;
+   font-size: 1.5em;
 }
 #highest{
-    margin: 10px;
-    background-color: cadetblue;
+    margin: 0px ; 
+    background-color: cyan;
     padding: 7px;
+    border-bottom: black 2px solid;
 }
 #high{
-    top: 14px;
+    top: 4px;
     left: 290px;
     position: absolute;
     font-size: 1.75em;
     margin: 0px;
+   
 }
 #initials{
-    width: 40%;
+    width: 20%;
+    height: 50px;
+    font-size: 32px;
+    margin-top: 10px;
+    background-color: rgb(188, 247, 244);
 }
-
+#btnContainer{
+    display: inline-flex;
+    
+}
 
 
 

@@ -120,13 +120,14 @@ function setScore(){
     document.getElementById("high").textContent = storeInfo;
     localStorage.setItem("highestInfo", storeInfo);
     localStorage.setItem("highestScore", totalScore);
-    document.getElementById("btn1").style.visibility = "hidden";
+    document.getElementById("setHighScore").style.display = "none";
+    document.getElementById("initials").style.display = "none";
 }
 
 function clearScore(){
     localStorage.clear();
     document.getElementById("high").textContent = "";
-    document.getElementById("btn2").style.visibility = "hidden";
+    document.getElementById("setClear").style.display = "none";
 }
 
 function retry(){
@@ -143,7 +144,7 @@ function scoreRender(){
     }else{
         document.getElementById("userScore").textContent = "Sorry No High Score" ;
         document.getElementById("initials").style.display = "none";
-        document.getElementById("btn1").style.display = "none";
+        document.getElementById("setHighScore").style.display = "none";
     }
 }
 document.getElementById("high").textContent = localStorage.getItem("highestInfo");
